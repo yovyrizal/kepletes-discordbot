@@ -31,7 +31,7 @@ const rest = new REST({ version: "10" }).setToken(BOT_TOKEN);
 try {
   console.log("Started refreshing application (/) commands.");
 
-  await rest.put(Routes.applicationCommands(APP_ID, GUILD_ID), {
+  await rest.put(Routes.applicationGuildCommands(APP_ID, GUILD_ID), {
     body: commands,
   });
 
