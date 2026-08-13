@@ -1,10 +1,12 @@
 import { Events } from "discord.js";
+import { joinVoiceChannel } from "@discordjs/voice";
 
 export default async function join(interaction) {
+  if (!interaction.isChatInputCommand()) return;
   const voiceChannel = interaction.member.voice.channel;
 
   if (!voiceChannel) {
-    return message.reply("Masuk voice dulu kocak");
+    return interaction.reply("Masuk voice dulu kocak");
   }
 
   try {
@@ -14,9 +16,9 @@ export default async function join(interaction) {
       adapterCreator: voiceChannel.guild.voiceAdapterCreator,
     });
 
-    message.reply(`Berhasil join ke voice channel: ${voiceChannel.name}`);
+    interaction.reply(`Berhasil join ke voice channel: ${voiceChannel.name}`);
   } catch (err) {
     console.error(err);
-    message.reply("Gagal join ke voice channel");
+    interaction.reply("Gagal join ke voice channel");
   }
 }
