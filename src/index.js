@@ -3,6 +3,7 @@ import ready from "./events/ready.js";
 import { joinVoiceChannel } from "@discordjs/voice";
 import dotenv from "dotenv";
 import interactionCreate from "./events/interactionCreate.js";
+import messageCreate from "./events/messageCreate.js";
 dotenv.config();
 
 // env
@@ -20,5 +21,6 @@ const client = new Client({
 
 ready(client)
 interactionCreate(client)
+messageCreate(client);
 
 client.login(BOT_TOKEN);
